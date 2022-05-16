@@ -136,6 +136,11 @@ impl Window {
         true
     }
 
+    /// Return the delta time since the last frame in milliseconds.
+    pub fn get_delta_time(&self) -> u32 {
+        self.ticks_at_previous_frame
+    }
+
     /// Return true when there is an event waiting in the queue for processing.
     pub fn has_event(&self) -> bool {
         self.event_queue.len() > 0
@@ -190,6 +195,11 @@ impl Window {
     /// operation. To "unset" the color, call set_color with (255,255,255,255)
     pub fn set_color(&mut self, red: u8, green: u8, blue: u8, alpha: u8) {
         self.foreground_color = pixels::Color::RGBA(red, green, blue, alpha);
+    }
+
+    /// Get the current color as a tuple of (red, green, blue, alpha).
+    pub fn get_color(&self) -> (u8, u8, u8, u8) {
+        self.foreground_color.rgba()
     }
 
     /// Set up the color according to the internal state of the Window.
