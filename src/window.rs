@@ -197,11 +197,6 @@ impl Window {
         self.foreground_color = pixels::Color::RGBA(red, green, blue, alpha);
     }
 
-    /// Get the current color as a tuple of (red, green, blue, alpha).
-    pub fn get_color(&self) -> (u8, u8, u8, u8) {
-        self.foreground_color.rgba()
-    }
-
     /// Set up the color according to the internal state of the Window.
     fn prepare_to_draw(&mut self) {
         self.canvas.set_draw_color(self.foreground_color);
